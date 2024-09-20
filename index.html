@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Application</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>XYZ Bakers Pvt. Ltd - Loan Application</h1>
+
+        <!-- Step 1: Login Form -->
+        <div class="step active" id="step1">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <label for="userId">User ID:</label>
+                <input type="text" id="userId" name="userId" required>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+
+                <button type="submit">Login</button>
+            </form>
+        </div>
+
+        <!-- Step 2: Company Profile -->
+        <div class="step" id="step2">
+            <h2>Company Profile</h2>
+            <form id="profileForm">
+                <label for="companyName">Name of the Firm/Company:</label>
+                <input type="text" id="companyName" name="companyName" required>
+
+                <label for="industry">Industry/Sector:</label>
+                <input type="text" id="industry" name="industry" required>
+
+                <label for="numPartners">Number of Partners/Directors/Members:</label>
+                <input type="number" id="numPartners" name="numPartners" required>
+
+                <label for="businessVintage">Vintage of Business (Years):</label>
+                <input type="number" id="businessVintage" name="businessVintage" required>
+
+                <label for="businessNature">Nature of Business:</label>
+                <select id="businessNature" name="businessNature" required>
+                    <option value="">Select</option>
+                    <option value="MFG">Manufacturing</option>
+                    <option value="Services">Services</option>
+                    <option value="Agri">Agri-related</option>
+                </select>
+
+                <label for="numProducts">Number of Products/Services:</label>
+                <input type="number" id="numProducts" name="numProducts" required>
+
+                <label for="keyProducts">Key Products/Services:</label>
+                <input type="text" id="keyProducts" name="keyProducts" required>
+
+                <label for="isMSME">Whether MSME or not:</label>
+                <select id="isMSME" name="isMSME" required>
+                    <option value="">Select</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+
+                <label for="udayamReg">Udyam Registration Number:</label>
+                <input type="text" id="udayamReg" name="udayamReg">
+
+                <label for="importExport">Whether Customer Do Import or Export:</label>
+                <select id="importExport" name="importExport" required>
+                    <option value="">Select</option>
+                    <option value="Importer">Importer</option>
+                    <option value="Exporter">Exporter</option>
+                    <option value="None">None</option>
+                </select>
+
+                <button type="submit">Submit and Continue</button>
+            </form>
+        </div>
+
+        <!-- Step 3: KYC Details -->
+        <div class="step" id="step3">
+            <h2>KYC Details</h2>
+            <form id="kycForm">
+                <label for="panCard">PAN Card (Firm/Owner):</label>
+                <input type="text" id="panCard" name="panCard" required>
+
+                <label for="gstn">GSTN:</label>
+                <input type="text" id="gstn" name="gstn" required>
+
+                <label for="udayamCert">Udyam Registration Certificate:</label>
+                <input type="text" id="udayamCert" name="udayamCert" required>
+
+                <label for="propertyTax">If Own Property - Last 3 Years Tax Receipt:</label>
+                <input type="text" id="propertyTax" name="propertyTax">
+
+                <label for="rentalAgreement">If Rented - Rental Agreement:</label>
+                <input type="text" id="rentalAgreement" name="rentalAgreement">
+
+                <button type="submit">Submit KYC</button>
+            </form>
+        </div>
+
+        <!-- Step 4: Financial Data -->
+        <div class="step" id="step4">
+            <h2>Financial Data</h2>
+
+            <!-- Direct Expenses -->
+            <h3>Direct Expenses</h3>
+            <div class="input-field">
+                <label for="wages">Wages: </label>
+                <input type="number" id="wages" value="8000">
+            </div>
+            <div class="input-field">
+                <label for="stock">Stock on 1st April 2022: </label>
+                <input type="number" id="stock" value="16000">
+            </div>
+            <div class="input-field">
+                <label for="purchases">Purchases: </label>
+                <input type="number" id="purchases" value="20000">
+            </div>
+            <div class="input-field">
+                <label for="carriage">Carriage Inwards: </label>
+                <input type="number" id="carriage" value="3100">
+            </div>
+            <button onclick="validateDirectExpenses()">Validate</button>
+            <div id="direct-expenses-error" class="error"></div>
+
+            <!-- Indirect Expenses -->
+            <h3>Indirect Expenses</h3>
+            <div class="input-field">
+                <label for="salaries">Salaries: </label>
+                <input type="number" id="salaries" value="8000">
+            </div>
+            <div class="input-field">
+                <label for="repairs">Repairs: </label>
+                <input type="number" id="repairs" value="1900">
+            </div>
+            <div class="input-field">
+                <label for="rent">Rent: </label>
+                <input type="number" id="rent" value="4500">
+            </div>
+            <div class="input-field">
+                <label for="badDebts">Bad Debts: </label>
+                <input type="number" id="badDebts" value="5000">
+            </div>
+            <button onclick="validateIndirectExpenses()">Validate</button>
+            <div id="indirect-expenses-error" class="error"></div>
+
+            <!-- Liabilities -->
+            <h3>Liabilities</h3>
+            <div class="input-field">
+                <label for="creditors">Creditors: </label>
+                <input type="number" id="creditors" value="26000">
+            </div>
+            <div class="input-field">
+                <label for="capital">Capital: </label>
+                <input type="number" id="capital" value="190000">
+            </div>
+            <div class="input-field">
+                <label for="billsPayable">Bills Payable: </label>
+                <input type="number" id="billsPayable" value="23500">
+            </div>
+            <button onclick="validateLiabilities()">Validate</button>
+            <div id="liabilities-error" class="error"></div>
+
+            <!-- Assets -->
+            <h3>Assets</h3>
+            <div class="input-field">
+                <label for="debtors">Sundry Debtors: </label>
+                <input type="number" id="debtors" value="36000">
+            </div>
+            <div class="input-field">
+                <label for="cash">Cash at Bank: </label>
+                <input type="number" id="cash" value="26000">
+            </div>
+            <div class="input-field">
+                <label for="land">Land: </label>
+                <input type="number" id="land" value="7000">
+            </div>
+            <button onclick="validateAssets()">Validate</button>
+            <div id="assets-error" class="error"></div>
+        </div>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>
